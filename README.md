@@ -3,6 +3,7 @@ Web-Based Attendance Management System
 
 Project Requirements
 Your final project must incorporate all the following elements:
+
 ★ Front-End Development: HTML, CSS, JavaScript, React
 ★ Back-End Development: Server-side logic using PHP
 ★ Database: MySQL for storing user data.
