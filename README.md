@@ -14,8 +14,7 @@ Your final project must incorporate all the following elements:
 - ☆ Team Member Task Distribution
 - ★ Final Presentation
 - ☆ Each team will have 10 minutes to demonstrate their project.
-- ★ Unique Feature Requirement:
-- ☆ Your website must include at least one feature that was not covered in class.
+- ★ Unique Feature Requirement: Your website must include at least one feature that was not covered in class.
 
 # Web-Based Attendance Management System
 
