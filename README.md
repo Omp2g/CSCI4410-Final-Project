@@ -1,4 +1,6 @@
 # CSCI4410-Final-Project
+
+#Smart Attend
 Web-Based Attendance Management System
 
 ## Project Requirements
