@@ -13,7 +13,7 @@ function Register() {
   };
 
   const handleRegister = async () => {
-    const res = await fetch('http://localhost/smart-attend/register.php', {
+    const res = await fetch('http://localhost/smart_attend/register.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
