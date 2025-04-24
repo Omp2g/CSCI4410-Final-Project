@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Register.css';
 
 function Register() {
   const [form, setForm] = useState({
@@ -23,16 +24,32 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <input name="name" placeholder="Name" onChange={handleChange} /><br />
-      <input name="email" placeholder="Email" onChange={handleChange} /><br />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} /><br />
-      <select name="role" onChange={handleChange}>
-        <option value="student">Student</option>
-        <option value="teacher">Teacher</option>
-      </select><br />
-      <button onClick={handleRegister}>Register</button>
+    <div className="register-bg">
+      <div className="register-glass-card">
+        <h2>Create Account</h2>
+        <input
+          name="name"
+          placeholder="Full Name"
+          onChange={handleChange}
+        />
+        <input
+          name="email"
+          placeholder="Email Address"
+          type="email"
+          onChange={handleChange}
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
+        <select name="role" onChange={handleChange}>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+        </select>
+        <button onClick={handleRegister}>Register</button>
+      </div>
     </div>
   );
 }
