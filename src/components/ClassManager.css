@@ -1,77 +1,186 @@
 /* Container */
 .class-manager {
-  background:      var(--card);
-  color:           var(--text);
-  backdrop-filter: blur(8px);
-  padding:         1rem;
-  border-radius:   var(--radius-md);
-  box-shadow:      var(--shadow-md);
+  background: var(--card);
+  color: var(--text);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
 }
 
 /* Title */
 .class-manager h3 {
-  margin-bottom: 0.75rem;
-  font-size:     1.2rem;
-  font-weight:   600;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.class-manager h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(to right, #4361ee, #3a56d4);
+  border-radius: 10px;
 }
 
 /* Class list */
 .class-manager ul {
-  list-style:       none;
-  max-height:       200px;
-  overflow-y:       auto;
-  padding:          0;
-  margin:           0 0 1rem;
+  list-style: none;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  margin: 0 0 1.5rem;
 }
 
 .class-manager li {
-  display:          flex;
-  justify-content:  space-between;
-  align-items:      center;
-  padding:          0.25rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0;
 }
 
-/* “Select class” & “remove” buttons inside list */
-.class-manager li button {
-  background: none;
-  border:     none;
-  color:      var(--primary);
-  cursor:     pointer;
-  font-size:  0.95rem;
-  transition: color var(--transition-fast);
+/* Class item button */
+.class-item-btn {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  background: rgba(67, 97, 238, 0.08);
+  color: #4361ee;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
 }
-.class-manager li button:hover {
-  color: var(--primary-dark);
+
+.class-item-btn:hover {
+  background: rgba(67, 97, 238, 0.12);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.class-item-btn:active {
+  transform: translateY(0);
+}
+
+/* Light mode specific styling */
+@media (prefers-color-scheme: light) {
+  .class-item-btn {
+    color: #4361ee;
+    background: rgba(67, 97, 238, 0.08);
+  }
+}
+
+/* Dark mode specific styling */
+@media (prefers-color-scheme: dark) {
+  .class-item-btn {
+    color: #a3b8fd;
+    background: rgba(67, 97, 238, 0.15);
+  }
+  
+  .class-item-btn:hover {
+    background: rgba(67, 97, 238, 0.25);
+  }
+  
+  .class-manager h3 {
+    color: #eaeaea;
+  }
+  
+  /* Fix invisible text in dark mode */
+  .class-manager {
+    color: var(--text-dark);
+  }
 }
 
 /* Add‐new‐class form */
 .add-section {
-  display:    flex;
-  gap:        var(--space-sm);
+  display: flex;
+  gap: 10px;
+  margin-top: 0.5rem;
 }
 
 .add-section input {
-  flex:            1;
-  padding:         0.5rem;
-  border:          1px solid var(--gray-300);
-  border-radius:   var(--radius-sm);
-  font-size:       1rem;
-  background:      white;
-  color:           var(--text);
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: white;
+  color: var(--text);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.add-section input:focus {
+  border-color: #4361ee;
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.15);
+  outline: none;
+  transform: translateY(-1px);
 }
 
 .add-section button {
-  background:    var(--success);
-  color:         white;
-  padding:       0.5rem 1rem;
-  border:        none;
-  border-radius: var(--radius-md);
-  cursor:        pointer;
-  font-size:     0.95rem;
-  transition:    background var(--transition-fast),
-                 transform  var(--transition-fast);
+  background: linear-gradient(to right, #2ecc71, #27ae60);
+  color: white;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
 }
+
 .add-section button:hover {
-  background: var(--success-dark);
-  transform:  translateY(-1px);
+  background: linear-gradient(to right, #27ae60, #2ecc71);
+  box-shadow: 0 6px 15px rgba(46, 204, 113, 0.3);
+  transform: translateY(-2px);
+}
+
+.add-section button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(46, 204, 113, 0.2);
+}
+
+/* Dark mode for add section */
+@media (prefers-color-scheme: dark) {
+  .add-section input {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #f5f5f5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-section input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .add-section input:focus {
+    border-color: #6c8eff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    color: white;
+  }
+  
+  /* Improve visibility of text input value */
+  .add-section input {
+    caret-color: white; /* Make cursor visible */
+  }
 }

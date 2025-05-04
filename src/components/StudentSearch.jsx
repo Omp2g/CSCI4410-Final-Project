@@ -1,5 +1,6 @@
 // src/components/StudentSearch.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ThemeContext } from '../ThemeContext';
 import './StudentSearch.css';
 
 export default function StudentSearch() {
@@ -7,6 +8,7 @@ export default function StudentSearch() {
   const [result, setResult]   = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError]     = useState('');
+  const { theme }             = useContext(ThemeContext);
 
   const handleSearch = async () => {
     setLoading(true);
@@ -50,7 +52,7 @@ export default function StudentSearch() {
   };
 
   return (
-    <div className="student-search card">
+    <div className={`student-search card ${theme === 'dark' ? 'dark-mode-search' : ''}`}>
       <h3>Search Student</h3>
 
       <div className="search-controls">
@@ -68,7 +70,7 @@ export default function StudentSearch() {
       {error && <p className="error">{error}</p>}
 
       {result && (
-        <>
+        <div className="search-results">
           <table className="history-table">
             <thead>
               <tr>
@@ -89,7 +91,7 @@ export default function StudentSearch() {
           </table>
             <br></br>
           <button className="report-btn" onClick={downloadReport}> 📄 Download Report</button>
-        </>
+        </div>
       )}
     </div>
   );

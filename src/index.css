@@ -6,7 +6,7 @@
   --text:        #222;                 /* body text */
   --card:        rgba(255,255,255,0.9);/* panel/card backgrounds */
 
-  /* (You can also move your other globals here if you’d like:
+  /* (You can also move your other globals here if you'd like:
      --primary, --primary-dark, --gray-300, --radius-sm, --radius-md, --space-sm, --shadow-md, --success, --success-dark, etc.)
   */
 }
@@ -30,4 +30,80 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Dark theme class for body - ensures text visibility */
+body.dark-theme {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Dark theme text visibility fixes */
+.dark-theme h1, 
+.dark-theme h2, 
+.dark-theme h3, 
+.dark-theme h4, 
+.dark-theme h5, 
+.dark-theme h6,
+.dark-theme p, 
+.dark-theme span:not(.icon), 
+.dark-theme div, 
+.dark-theme label {
+  color: var(--text-dark);
+}
+
+/* Ensure all text containers in dark mode have proper contrast */
+.dark-theme .class-manager,
+.dark-theme .student-search,
+.dark-theme .teacher-dashboard-grid {
+  color: var(--text-dark);
+}
+
+/* Error messages in dark mode */
+.dark-theme .error {
+  color: #ff8d85 !important;
+}
+
+/* Table and list visibility in dark mode */
+.dark-theme table,
+.dark-theme th,
+.dark-theme td,
+.dark-theme tr,
+.dark-theme tbody,
+.dark-theme thead {
+  color: #f5f5f5 !important;
+}
+
+/* Search results must be visible */
+.dark-theme .search-results,
+.dark-theme .history-table,
+.dark-theme .history-table td,
+.dark-theme .student-search table {
+  color: #f5f5f5 !important;
+}
+
+/* Additional status indicators for dark mode */
+.dark-theme .status-present {
+  color: #4ade80 !important;
+}
+
+.dark-theme .status-absent {
+  color: #f87171 !important;
+}
+
+.dark-theme .status-late {
+  color: #fbbf24 !important;
+}
+
+/* Root element with dark-mode class for broader compatibility */
+html.dark-mode {
+  background-color: var(--bg-dark);
+}
+
+/* Ensure inputs are visible in dark mode */
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea {
+  color: #f5f5f5 !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
 }
