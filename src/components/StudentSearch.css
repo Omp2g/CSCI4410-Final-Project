@@ -1,0 +1,87 @@
+/* src/components/StudentSearch.css */
+
+.student-search {
+    flex: 1;
+    padding: 1rem;
+    background: var(--card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* ─── Search Bar ───────────────────────────────────────────── */
+  .search-controls {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    align-items: center;
+  }
+  
+  .search-controls input {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--text);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .search-controls input::placeholder {
+    color: gray;
+  }
+  
+  .search-controls input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.2);
+    outline: none;
+  }
+  
+  /* ─── Buttons ───────────────────────────────────────────────── */
+  .search-controls button,
+  .download-btn {
+    padding: 0.6rem 1.2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  
+  .search-controls button:hover,
+  .download-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* ─── Summary & History (unchanged) ───────────────────────── */
+  .summary {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin: var(--space-sm) 0;
+  }
+  
+  .stat {
+    background: var(--secondary-light);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+  }
+  
+  .history {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-sm) 0;
+  }
+  
+  .history li {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  

@@ -1,0 +1,67 @@
+/* 1) Flex‐container for summary + history */
+.dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* 2) Shared “glass card” style for both panels */
+.panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-md);
+}
+
+/* 3) Base widths */
+.left-panel,
+.right-panel {
+  flex: 1 1 300px; /* grow, shrink, base 300px */
+}
+
+/* 4) Larger‐screen proportions */
+@media (min-width: 1024px) {
+  .left-panel  { flex: 2 1 400px; }
+  .right-panel { flex: 3 1 600px; }
+}
+
+/* 5) Stats bar & fill (reuse your existing styles) */
+.stat {
+  margin-bottom: var(--space-md);
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.stat-label {
+  font-size: 1rem;
+  margin-bottom: var(--space-xs);
+}
+.stat-bar {
+  height: 6px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.stat-fill {
+  height: 100%;
+  background: var(--primary);
+}
+
+/* 6) History table */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.history-table th,
+.history-table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+}
+.history-table tr + tr {
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+.status-present { color: var(--success); }
+.status-absent  { color: var(--danger);  }

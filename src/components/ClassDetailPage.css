@@ -1,0 +1,7 @@
+/* src/components/ClassDetailPage.css */
+.class-detail-grid {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  

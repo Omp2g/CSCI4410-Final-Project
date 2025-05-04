@@ -1,0 +1,6 @@
+/* src/components/TeacherDashboard.css */
+.teacher-dashboard-grid {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}

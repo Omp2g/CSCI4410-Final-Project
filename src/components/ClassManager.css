@@ -1,0 +1,77 @@
+/* Container */
+.class-manager {
+  background:      var(--card);
+  color:           var(--text);
+  backdrop-filter: blur(8px);
+  padding:         1rem;
+  border-radius:   var(--radius-md);
+  box-shadow:      var(--shadow-md);
+}
+
+/* Title */
+.class-manager h3 {
+  margin-bottom: 0.75rem;
+  font-size:     1.2rem;
+  font-weight:   600;
+}
+
+/* Class list */
+.class-manager ul {
+  list-style:       none;
+  max-height:       200px;
+  overflow-y:       auto;
+  padding:          0;
+  margin:           0 0 1rem;
+}
+
+.class-manager li {
+  display:          flex;
+  justify-content:  space-between;
+  align-items:      center;
+  padding:          0.25rem 0;
+}
+
+/* “Select class” & “remove” buttons inside list */
+.class-manager li button {
+  background: none;
+  border:     none;
+  color:      var(--primary);
+  cursor:     pointer;
+  font-size:  0.95rem;
+  transition: color var(--transition-fast);
+}
+.class-manager li button:hover {
+  color: var(--primary-dark);
+}
+
+/* Add‐new‐class form */
+.add-section {
+  display:    flex;
+  gap:        var(--space-sm);
+}
+
+.add-section input {
+  flex:            1;
+  padding:         0.5rem;
+  border:          1px solid var(--gray-300);
+  border-radius:   var(--radius-sm);
+  font-size:       1rem;
+  background:      white;
+  color:           var(--text);
+}
+
+.add-section button {
+  background:    var(--success);
+  color:         white;
+  padding:       0.5rem 1rem;
+  border:        none;
+  border-radius: var(--radius-md);
+  cursor:        pointer;
+  font-size:     0.95rem;
+  transition:    background var(--transition-fast),
+                 transform  var(--transition-fast);
+}
+.add-section button:hover {
+  background: var(--success-dark);
+  transform:  translateY(-1px);
+}

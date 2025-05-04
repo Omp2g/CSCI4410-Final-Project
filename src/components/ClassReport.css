@@ -1,0 +1,35 @@
+.class-report {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .report-controls {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .report-controls input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--gray-300);
+  }
+  
+  .report-controls button {
+    padding: 0.5rem 1rem;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .report-controls button:hover {
+    background: var(--primary-dark);
+  }
+  
