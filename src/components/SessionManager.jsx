@@ -1,4 +1,3 @@
-// src/components/SessionManager.jsx
 import React, { useState, useEffect } from 'react';
 import './SessionManager.css';
 
@@ -7,15 +6,15 @@ export default function SessionManager({ classId, onSelect }) {
   const [date, setDate]         = useState('');
   const token                   = sessionStorage.getItem('token');
 
-  // load sessions when classId (or token) changes
   useEffect(() => {
     if (!classId) {
       setSessions([]);
       return;
     }
-    fetch(`http://localhost/smart_attend/get_sessions.php?classId=${classId}`, {
-      headers: { Authorization: 'Bearer ' + token }
-    })
+    fetch(
+      `http://localhost/smart_attend/get_sessions.php?classId=${classId}`,
+      { headers: { Authorization: 'Bearer ' + token } }
+    )
       .then(r => {
         if (!r.ok) throw new Error('Failed to load sessions');
         return r.json();
@@ -33,15 +32,17 @@ export default function SessionManager({ classId, onSelect }) {
     }
 
     try {
-      const res = await fetch('http://localhost/smart_attend/add_session.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + token
-        },
-        // send the key name the PHP expects:
-        body: JSON.stringify({ classId, sessionDate: date })
-      });
+      const res = await fetch(
+        'http://localhost/smart_attend/add_session.php',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+          },
+          body: JSON.stringify({ classId, sessionDate: date })
+        }
+      );
 
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
@@ -49,7 +50,7 @@ export default function SessionManager({ classId, onSelect }) {
       }
 
       setDate('');
-      // reload the updated sessions list
+      // reload updated sessions
       const updated = await fetch(
         `http://localhost/smart_attend/get_sessions.php?classId=${classId}`,
         { headers: { Authorization: 'Bearer ' + token } }
@@ -69,7 +70,8 @@ export default function SessionManager({ classId, onSelect }) {
         {sessions.map(s => (
           <li key={s.id}>
             <button onClick={() => onSelect(s)}>
-              {new Date(s.session_date).toLocaleDateString()}
+              { /* Option B: append T00:00 so it's parsed as local midnight */ }
+              {new Date(s.session_date + 'T00:00').toLocaleDateString()}
             </button>
           </li>
         ))}
@@ -85,5 +87,3 @@ export default function SessionManager({ classId, onSelect }) {
     </aside>
   );
 }
-
-

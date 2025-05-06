@@ -2,21 +2,38 @@
 
 /* Light theme (default) */
 :root {
-  --bg:          #f5f5f5;              /* page background */
-  --text:        #222;                 /* body text */
-  --card:        rgba(255,255,255,0.9);/* panel/card backgrounds */
+  /* page */
+  --bg:            #f5f5f5;
+  --text:          #222;
 
-  /* (You can also move your other globals here if you’d like:
-     --primary, --primary-dark, --gray-300, --radius-sm, --radius-md, --space-sm, --shadow-md, --success, --success-dark, etc.)
-  */
+  /* cards/panels */
+  --card:          rgba(255,255,255,0.9);
+
+  /* primary accent (blue) */
+  --primary:       #3498db;
+  --primary-dark:  #2980b9;
+
+  /* success accent (green) */
+  --success:       #2ecc71;
+  --success-dark:  #27ae60;
+
+  /* grays & radius & shadows */
+  --gray-300:      #ccc;
+  --radius-sm:     4px;
+  --radius-md:     10px;
+  --shadow-md:     0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* Dark theme */
 [data-theme="dark"] {
-  --bg:          #222;
-  --text:        #f5f5f5;
-  --card:        rgba(0,0,0,0.6);
+  --bg:            #222;
+  --text:          #f5f5f5;
+  --card:          rgba(0,0,0,0.6);
+
+  /* you can override primary/success if you like */
 }
+
+/* ...rest of your reset & body styles... */
 
 body {
   margin: 0;

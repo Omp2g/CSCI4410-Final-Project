@@ -52,7 +52,7 @@ export default function Header() {
           className="hdr-logout"
           title="Logout"
         >
-          🚪
+          ⍈
         </button>
       </div>
     </header>

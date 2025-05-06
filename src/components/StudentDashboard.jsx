@@ -53,7 +53,7 @@ export default function StudentDashboard() {
                 </div>
               ))
             ) : (
-              <p>No data yet.</p>
+              <p className="no-data">No data yet.</p>
             )}
           </div>
         </section>
@@ -76,14 +76,14 @@ export default function StudentDashboard() {
                     <td>{new Date(r.date).toLocaleDateString()}</td>
                     <td>{r.course}</td>
                     <td className={`status-${r.status}`}>
-                      {r.status}
+                      {r.status.charAt(0).toUpperCase() + r.status.slice(1)}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <p>No records yet.</p>
+            <p className="no-data">No records yet.</p>
           )}
         </section>
       </div>

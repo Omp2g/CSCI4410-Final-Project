@@ -1,87 +1,240 @@
-/* src/components/StudentSearch.css */
-
+/* ─── Student Search Container ───────────────────────────────────── */
 .student-search {
-    flex: 1;
-    padding: 1rem;
-    background: var(--card);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
-  }
-  
-  /* ─── Search Bar ───────────────────────────────────────────── */
-  .search-controls {
-    display: flex;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-md);
-    align-items: center;
-  }
-  
-  .search-controls input {
-    flex: 1;
-    padding: 0.6rem 1rem;
-    border: 1px solid var(--gray-300);
-    border-radius: var(--radius-md);
-    background: white;
-    color: var(--text);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  }
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 320px;
+  transition: background 0.3s, color 0.3s;
+}
 
-  .search-controls input::placeholder {
-    color: gray;
-  }
-  
-  .search-controls input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.2);
-    outline: none;
-  }
-  
-  /* ─── Buttons ───────────────────────────────────────────────── */
-  .search-controls button,
-  .download-btn {
-    padding: 0.6rem 1.2rem;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: var(--radius-md);
-    font-size: 1rem;
-    font-weight: 500;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-  }
-  
-  .search-controls button:hover,
-  .download-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  }
-  
-  /* ─── Summary & History (unchanged) ───────────────────────── */
-  .summary {
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-    margin: var(--space-sm) 0;
-  }
-  
-  .stat {
-    background: var(--secondary-light);
-    padding: var(--space-sm);
-    border-radius: var(--radius-sm);
-  }
-  
-  .history {
-    list-style: none;
-    padding: 0;
-    margin: var(--space-sm) 0;
-  }
-  
-  .history li {
-    padding: 0.25rem 0;
-    border-bottom: 1px solid var(--gray-200);
-  }
-  
+/* ─── Section Header ────────────────────────────────────────────── */
+.student-search h3 {
+  position: relative;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  padding-bottom: 0.5rem;
+}
+.student-search h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+/* ─── Search Controls ───────────────────────────────────────────── */
+.search-controls {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.search-controls input {
+  flex: 0 1 800px;             /* shrink/grow but max at 300px */
+  width: 100%;                 /* fill up to the max-width */
+  max-width: 800px;            /* cap input width */
+  padding: .75rem .75rem;     /* comfortable padding */
+  font-size: 0.95rem;          /* slightly smaller text */
+  background: var(--card);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.search-controls input::placeholder {
+  color: var(--text-secondary-light);
+}
+
+.search-controls input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+/* ─── Button ────────────────────────────────────────────────────── */
+.search-controls button {
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.search-controls button:hover {
+  background: linear-gradient(to right, var(--primary-dark), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+}
+
+.search-controls button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(52, 152, 219, 0.2);
+}
+
+/* ─── Summary & History ─────────────────────────────────────────── */
+.summary {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin: var(--space-sm) 0;
+}
+
+.stat {
+  background: var(--input-bg);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+}
+
+.history {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-sm) 0;
+}
+
+/* ─── History Table ───────────────────────────────────────────── */
+.history-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1rem 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.history-table th {
+  text-align: left;
+  padding: 14px 16px;
+  background: rgba(52, 152, 219, 0.1);
+  color: var(--primary);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.history-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background 0.15s ease;
+}
+
+.history-table tr:hover td {
+  background: rgba(52, 152, 219, 0.03);
+}
+
+.history-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ─── Status Indicators ────────────────────────────────────────── */
+.status-present {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.status-absent {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.status-late {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* ─── Dark Mode Overrides (variable-driven) ─────────────────────── */
+[data-theme="dark"] .student-search {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+}
+
+[data-theme="dark"] .student-search h3 {
+  color: var(--text);
+}
+
+[data-theme="dark"] .search-controls input {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .search-controls input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .search-controls input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+[data-theme="dark"] .search-controls button {
+  background: linear-gradient(to right, var(--primary-dark), var(--primary));
+}
+
+[data-theme="dark"] .search-controls button:hover {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+}
+
+[data-theme="dark"] .history-table th {
+  background: rgba(52, 152, 219, 0.2);
+  color: var(--primary);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .history-table td {
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+[data-theme="dark"] .history-table tr:hover td {
+  background: rgba(52, 152, 219, 0.05);
+}
+
+/* purple “Download CSV” button */
+.report-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, #9b59b6, #8e44ad);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(155, 89, 182, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.report-btn:hover {
+  background: linear-gradient(to right, #8e44ad, #9b59b6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(155, 89, 182, 0.3);
+}

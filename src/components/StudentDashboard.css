@@ -1,67 +1,117 @@
-/* 1) Flex‐container for summary + history */
+/* src/components/StudentDashboard.css */
+
+/* ─── Container for both panels ───────────────────────────────────────── */
 .dashboard-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 2rem;              /* more space between the two panels */
+  padding: 2rem;          /* padding around the whole dashboard-content */
 }
 
-/* 2) Shared “glass card” style for both panels */
+/* ─── “Glass card” style for panels ───────────────────────────────────── */
 .panel {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-md);
+  background: var(--card);
+  color: var(--text);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
   box-shadow: var(--shadow-md);
-  padding: var(--space-md);
+  padding: 2rem;          /* extra internal padding */
+  flex: 1 1 300px;
+  min-width: 280px;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* 3) Base widths */
-.left-panel,
-.right-panel {
-  flex: 1 1 300px; /* grow, shrink, base 300px */
-}
-
-/* 4) Larger‐screen proportions */
-@media (min-width: 1024px) {
-  .left-panel  { flex: 2 1 400px; }
-  .right-panel { flex: 3 1 600px; }
-}
-
-/* 5) Stats bar & fill (reuse your existing styles) */
-.stat {
-  margin-bottom: var(--space-md);
-}
-.stat-value {
+/* ─── Panel headings ──────────────────────────────────────────────────── */
+.panel h3 {
   font-size: 1.5rem;
-  font-weight: 600;
+  margin-bottom: 1.5rem;  /* more space below title */
+  position: relative;
+  padding-bottom: 0.5rem;
 }
+.panel h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* ─── Attendance Summary ──────────────────────────────────────────────── */
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;            /* space between each stat block */
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;            /* space between value, label and bar */
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
 .stat-label {
   font-size: 1rem;
-  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+  opacity: 0.8;
 }
+
 .stat-bar {
-  height: 6px;
-  background: rgba(0,0,0,0.1);
-  border-radius: 3px;
+  height: 10px;           /* a bit thicker for visibility */
+  background: rgba(0,0,0,0.05);
+  border-radius: 5px;
   overflow: hidden;
 }
+
 .stat-fill {
   height: 100%;
   background: var(--primary);
+  transition: width 0.5s ease;
 }
 
-/* 6) History table */
+/* ─── Attendance History ─────────────────────────────────────────────── */
 .history-table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 2rem;       /* extra gap above the table */
 }
+
 .history-table th,
 .history-table td {
-  padding: var(--space-sm) var(--space-md);
+  padding: 1rem;          /* more padding inside cells */
   text-align: left;
 }
-.history-table tr + tr {
+
+.history-table thead th {
+  background: rgba(0,0,0,0.05);
+  font-weight: 600;
+}
+
+.history-table tbody tr + tr {
   border-top: 1px solid rgba(0,0,0,0.1);
 }
-.status-present { color: var(--success); }
-.status-absent  { color: var(--danger);  }
+
+.status-present {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.status-absent {
+  color: red;
+  font-weight: 600;
+}
+
+/* ─── “No data” fallback ──────────────────────────────────────────────── */
+.no-data {
+  opacity: 0.7;
+  font-style: italic;
+  margin-top: 1rem;
+}

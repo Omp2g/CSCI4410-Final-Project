@@ -1,5 +1,6 @@
 .student-manager {
-    background: rgba(255,255,255,0.9);
+    /*background: rgba(255,255,255,0.9);*/
+    background: var(--card);
     backdrop-filter: blur(8px);
     padding: 1rem;
     border-radius: 8px;

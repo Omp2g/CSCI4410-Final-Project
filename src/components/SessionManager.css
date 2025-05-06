@@ -1,70 +1,109 @@
+/* ─── Session Manager Container ───────────────────────────────────── */
 .session-manager {
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(8px);
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow-md);
-  }
-  
-  .session-manager h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
-  
-  .session-manager ul {
-    list-style: none;
-    max-height: 150px;
-    overflow-y: auto;
-    padding: 0;
-    margin: 0 0 1rem;
-  }
-  
-  .session-manager li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .session-manager button {
-    background: none;
-    border: none;
-    color: var(--primary);
-    cursor: pointer;
-    font-size: 0.95rem;
-    padding: 0;
-  }
-  
-  .add-section {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .add-section input {
-    flex: 1;
-    padding: 0.4rem;
-    border: 1px solid var(--gray-300);
-    border-radius: 4px;
-  }
-  
-  .add-section button {
-    padding: 0.4rem 0.8rem;
-    background: var(--success);
-    color: gray;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* Manager .add-section buttons */
-.add-section button {
-  background: var(--success);     /* green base */
-  color: white;                   /* white text */
-  padding: 0.5rem 1rem;           /* comfortable click area */
+  background: var(--card);
+  color: var(--text);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ─── Heading with underline accent ──────────────────────────────── */
+.session-manager h3 {
+  position: relative;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  padding-bottom: 0.5rem;
+}
+.session-manager h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+/* ─── Session List ───────────────────────────────────────────────── */
+.session-manager ul {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.session-manager li {
+  margin-bottom: 0.5rem;
+}
+.session-manager li button {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: rgba(52, 152, 219, 0.08);
+  color: var(--primary);
   border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.session-manager li button:hover {
+  background: rgba(52, 152, 219, 0.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.session-manager li button:active {
+  transform: translateY(0);
 }
 
-.add-section button:hover {
-  background: #27ae60;            /* darker green hover */
+/* ─── Add Session Form ───────────────────────────────────────────── */
+.add-section {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.add-section input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  background: white;
+  color: var(--text);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.add-section input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
+  outline: none;
   transform: translateY(-1px);
+}
+
+/* green “+ Add Session” button */
+.add-section button {
+  background: linear-gradient(to right, var(--success), var(--success-dark));
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(46,204,113,0.2);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.add-section button:hover {
+  background: linear-gradient(to right, var(--success-dark), var(--success));
+  box-shadow: 0 6px 15px rgba(46,204,113,0.3);
+  transform: translateY(-2px);
+}
+.add-section button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(46,204,113,0.2);
 }
